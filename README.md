@@ -1,2 +1,3 @@
 # mandalart
-anyone can make mandalart plan diagram
+
+Anyone can make mandalart plan diagram
