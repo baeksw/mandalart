@@ -1,8 +1,10 @@
 from django.db import models
 from enum import Enum
 
-# Create your models here.
 class MandalLocation(Enum):
+    ''' 
+        It refers to the location of the eight topics around the central topic.  
+    '''
     LOCATION_0 = 0
     LOCATION_1 = 1
     LOCATION_2 = 2
@@ -13,8 +15,19 @@ class MandalLocation(Enum):
     LOCATION_7 = 7
     LOCATION_8 = 8
 
+class MandalWithSection:
+    pass
+
+class MandalCoreManager(models.Manager):
+    def create_mandalart_with_sections(self, mandal_with_sections):
+        '''
+            @param mandal_with_section 
+
+        '''
+        pass
 
 class MandalCore(models.Model):
+    objects = MandalCoreManager()
     descr = models.CharField(unique=True, max_length=200, null=False, blank=False)
     location = models.CharField(max_length=20, default=MandalLocation.LOCATION_0.value)
 
