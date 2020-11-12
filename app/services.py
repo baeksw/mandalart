@@ -1,6 +1,4 @@
 
-
-
 class MandalartSection:
     def __init__(self, position : int, descr : str):
         self._position = position 
@@ -21,6 +19,9 @@ class MandalartSection:
     @property
     def descr(self):
         return self._descr 
+
+    def __str__(self):
+        return f"position : {self.position}, descr : {self.descr}"
 
 class Mandalart(MandalartSection):
     def __init__(self, descr : str ):
@@ -51,6 +52,20 @@ class Mandalart(MandalartSection):
         section = self._group[position]
         return section
 
+    def debug(self):
+        display_ = f'''
+        [-] position 0 = {self._group[0].descr}
+            - position 1 = {self._group[1].descr}
+            - position 2 = {self._group[2].descr}
+            - position 3 = {self._group[3].descr}
+            - position 4 = {self._group[4].descr}
+            - position 5 = {self._group[5].descr}
+            - position 6 = {self._group[6].descr}
+            - position 7 = {self._group[7].descr}
+            - position 8 = {self._group[8].descr}
+        '''
+        return display_
+
     @property
     def group(self):
         return self._group
@@ -62,5 +77,9 @@ def test_do_making_mandal():
     m = Mandalart('core')
     m.set_position_with_keyword(1, 'computer')
     section = m.get_by_position(1)
-    assert section.descr == 'computer', f"{m.group}"
+    print(m.debug())
+    assert section.descr == 'computer', f"{m.debug()}"
+
+
+
 
