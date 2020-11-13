@@ -72,14 +72,4 @@ class Mandalart(MandalartSection):
 
 
 
-''' -------------------------- TEST -------------------------- '''
-def test_do_making_mandal():
-    m = Mandalart('core')
-    m.set_position_with_keyword(1, 'computer')
-    section = m.get_by_position(1)
-    print(m.debug())
-    assert section.descr == 'computer', f"{m.debug()}"
-
-
-
 
