@@ -1,3 +1,4 @@
+import json 
 
 class MandalartSection:
     def __init__(self, position : int, descr : str):
@@ -19,7 +20,11 @@ class MandalartSection:
     @property
     def descr(self):
         return self._descr 
-
+    
+    def __iter__(self):
+        yield 'position', self.position
+        yield 'descr', self.descr
+    
     def __str__(self):
         return f"position : {self.position}, descr : {self.descr}"
 
@@ -65,11 +70,36 @@ class Mandalart(MandalartSection):
             - position 8 = {self._group[8].descr}
         '''
         return display_
-
+ 
+    def __iter__(self):
+        yield 0 , self.group[0].descr
+        yield 1 , self.group[1].descr
+        yield 2 , self.group[2].descr
+        yield 3 , self.group[3].descr
+        yield 4 , self.group[4].descr
+        yield 5 , self.group[5].descr
+        yield 6 , self.group[6].descr
+        yield 7 , self.group[7].descr
+        yield 8 , self.group[8].descr
+    
+    @staticmethod 
+    def create_mandal(core : str, keywords : list ):
+        m = Mandalart(core)
+        for idx, val in enumerate(keywords[:8]):
+            m.set_position_with_keyword((idx+1), val)
+        return m 
+    
     @property
     def group(self):
         return self._group
 
 
+if __name__ == '__main__':
+    m = Mandalart('core')
+    m.set_position_with_keyword(1, 'like')
+    print(dict(m))
+    
+    m = Mandalart.create_mandal('car', "BCDEFGHIKKKK")
+    print(dict(m))
 
 

@@ -77,4 +77,9 @@ def test_register_of_mandalart_by_8_keyword(instance):
     section = instance.get_by_position(8)
     assert section.descr == 'car_8'
 
-
+def test_create_mandal_with_keywords(instance):
+    md = Mandalart.create_mandal('A', 'BCDEFGHI')
+    expected = {0: 'A', 1: 'B', 2: 'C', 3: 'D', 4: 'E', 5: 'F', 6: 'G', 7: 'H', 8: 'I'}
+    assert expected == dict(md)
+    
+    
