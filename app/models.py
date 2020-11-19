@@ -47,8 +47,8 @@ class MandalSection(models.Model):
     [  section_8  ] [  section_0  ] [  section_4  ]
     [  section_7  ] [  section_6  ] [  section_5  ]
     """
-
     core = models.ForeignKey("MandalCore", on_delete=models.CASCADE)
+    depth = models.IntegerField(default=0)
     location = models.CharField(max_length=20, default=MandalLocation.LOCATION_0.value)
     descr = models.CharField(max_length=200, blank=True, null=False)
 

@@ -1,5 +1,55 @@
 import json 
 
+import abc 
+
+class Component(metaclass=abc.ABCMeta):
+    @abc.abstractmethod 
+    def operation(self):
+        pass
+
+
+class Composite(Component):
+    '''
+    Define behavior for components having children.
+    Store child components.
+    Implement child-related operations in the component interface 
+    '''
+    def __init__(self):
+        self._children = set()
+
+    def operation(self):
+        for child in self._children:
+            child.operation()
+
+    def add(self, component):
+        self._children.add(component)
+
+    def remove(self, component):
+        self._children.discard(component)
+
+class Leaf(Component):
+    '''
+    Represent leaf objects in the composition. A leaf has no children.
+    Define behavior for primitive objects in the composition.
+    '''
+    def operation(self):
+        pass 
+
+
+class Mandal(metaclass=abc.ABCMeta):
+    @abc.abstractmethod 
+    def operation(self):
+        pass
+
+
+class MandalMaster(Mandal):
+    def __init__(self):
+        self._mandalart = set()
+    def add(self, mandal):
+        pass
+
+
+
 class MandalartSection:
     def __init__(self, position : int, descr : str):
         self._position = position 
