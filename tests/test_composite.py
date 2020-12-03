@@ -1,11 +1,24 @@
 import pytest 
 
-from app.services import *
+class LeafElement:
+    def __init__(self, *args):
+        self.position = args[0]
 
-def test_composition():
-    leaf = Leaf()
-    composite = Composite()
-    composite.add(leaf)
-    composite.operation()
+    def show_details(self):
+        pass
 
-    assert False
+
+class CompositeElement:
+    def __init__(self, *args):
+        self.position = args[0]
+        self.children = []
+
+    def add(self, child):
+        pass 
+
+
+    def remove(self, child):
+        pass
+
+    def show_details(self):
+        pass

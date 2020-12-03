@@ -20,5 +20,11 @@ urlpatterns = [
 ]
 '''
 
+urlpatterns = [
+    path("", views.index , name="about"),
+
+]
+
+
 
 
